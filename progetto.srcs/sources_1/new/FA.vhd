@@ -5,14 +5,14 @@ entity FA is
     port ( 
         X : in std_logic;
         Y : in std_logic;
-        Cin : in std_logic;
+        CIN : in std_logic;
         S : out std_logic;
-        Cout : out std_logic
+        COUT : out std_logic
     );
 end FA;
 
 architecture RTL of FA is
 begin
-    S <= X xor Y xor Cin;
-    Cout <= (X and Y) or (Y and Cin) or (X and Cin);
+    S <= X xor Y xor CIN;
+    COUT <= (X and Y) or (Y and CIN) or (X and CIN);
 end RTL;
