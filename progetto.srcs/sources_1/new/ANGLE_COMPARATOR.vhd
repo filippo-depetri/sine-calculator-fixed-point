@@ -4,8 +4,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ANGLE_COMPARATOR is
     port (
         ANGLE   : in std_logic_vector(9 downto 0);
-        CLK     : in std_logic;
-        RST     : in std_logic;
         RESULT  : out std_logic_vector(1 downto 0)
     );
 end ANGLE_COMPARATOR;
@@ -25,7 +23,6 @@ architecture RTL of ANGLE_COMPARATOR is
     signal Z_sig_90  : std_logic_vector(9 downto 0);
     signal Z_sig_180 : std_logic_vector(9 downto 0);
     signal Z_sig_270 : std_logic_vector(9 downto 0);
-    signal quad_sig  : std_logic_vector(1 downto 0);
     
 begin
     ADD_SUB_90 : ADDER_SUBTRACTOR_N
@@ -55,24 +52,8 @@ begin
             Z    => Z_sig_270,
             COUT => open
         );
-process(Z_sig_90, Z_sig_180, Z_sig_270)
-    begin
-        if Z_sig_90(9) = '0' then
-            quad_sig <= "00";
-        elsif Z_sig_180(9) = '0' then
-            quad_sig <= "01";
-        elsif Z_sig_270(9) = '0' then
-            quad_sig <= "10";
-        else
-            quad_sig <= "11";
-        end if;
-    end process;
-process(CLK, RST)
-    begin
-        if RST = '1' then
-            RESULT <= (others => '0');
-        elsif (CLK'event and CLK = '1') then
-            RESULT <= quad_sig;
-        end if;
-    end process;
+    RESULT <=   "00" when Z_sig_90(9) = '0' else
+                "01" when Z_sig_180(9) = '0' else
+                "10" when Z_sig_270(9) = '0' else
+                "11"; 
 end RTL;
