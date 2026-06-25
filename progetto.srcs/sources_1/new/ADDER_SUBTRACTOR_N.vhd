@@ -29,7 +29,7 @@ architecture RTL of ADDER_SUBTRACTOR_N is
     end component RCA_N;
     signal B_int : std_logic_vector(N-1 downto 0);
 begin
-    B_int <= Y xor (others => S);
+    B_int <= Y xor (N-1 downto 0 => S);
     RCA_N_i: RCA_N
         generic map(
             N => N

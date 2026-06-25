@@ -56,7 +56,7 @@ begin
         );
     RESULT <= ANGLE(6 downto 0)     when QUADRANT = "00" else
               Z_sig_Q2(6 downto 0)  when QUADRANT = "01" else
-              Z_sig_Q3(6 downto 0) when QUADRANT = "10" else
+              Z_sig_Q3(6 downto 0)  when QUADRANT = "10" else
               Z_sig_Q4(6 downto 0);
     SIGN <= '0' when QUADRANT = "00" else
             '0' when QUADRANT = "01" else
