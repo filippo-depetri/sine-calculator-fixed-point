@@ -5,7 +5,8 @@ entity LUT_TABLE is
     Port (
         ANGLE : in std_logic_vector(6 downto 0);
         Y1 : out std_logic_vector(9 downto 0);
-        Y2 : out std_logic_vector(9 downto 0)
+        Y2 : out std_logic_vector(9 downto 0);
+        DELTA : out std_logic_vector(2 downto 0)
     );
 end LUT_TABLE;
 
@@ -77,7 +78,8 @@ begin
               val_sin_88 when "1010",
               val_sin_88 when "1011",
               "0000000000" when others;
-    --Edge Cases
+
+    --Edge Cases and standard assignment
     Y1 <= val_sin_89 when ANGLE = "1011001" else -- 89 binary
           val_sin_90 when ANGLE = "1011010" else -- 90 binary
           Y1_no_edge;
@@ -85,4 +87,6 @@ begin
     Y2 <= val_sin_89 when ANGLE = "1011001" else
           val_sin_90 when ANGLE = "1011010" else
           Y2_no_edge;
+          
+    DELTA <= ANGLE(2 downto 0);
 end RTL;
