@@ -12,7 +12,7 @@ end LUT_TABLE;
 
 architecture RTL of LUT_TABLE is
 
-    signal index : std_logic_vector(3 downto 0);
+    signal index      : std_logic_vector(3 downto 0);
     signal Y1_no_edge : std_logic_vector(9 downto 0);
     signal Y2_no_edge : std_logic_vector(9 downto 0);
 
