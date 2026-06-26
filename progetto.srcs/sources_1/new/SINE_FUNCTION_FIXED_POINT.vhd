@@ -1,16 +1,16 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity CALCULATOR_COMB is
+entity SINE_FUNCTION_FIXED_POINT is
     PORT(
         ANGLE   : in std_logic_vector(8 downto 0);
         SINE    : out std_logic_vector(9 downto 0);
         CLK     : in std_logic;
         RST     : in std_logic
     );
-end CALCULATOR_COMB;
+end SINE_FUNCTION_FIXED_POINT;
 
-architecture STRUCTURAL of CALCULATOR_COMB is
+architecture STRUCTURAL of SINE_FUNCTION_FIXED_POINT is
     component REG_PP_N_BIT
         generic(N : integer);
         port(
