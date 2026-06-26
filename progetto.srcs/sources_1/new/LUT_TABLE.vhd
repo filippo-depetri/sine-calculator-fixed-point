@@ -6,7 +6,7 @@ entity LUT_TABLE is
         ANGLE : in std_logic_vector(6 downto 0);
         Y1 : out std_logic_vector(9 downto 0);
         Y2 : out std_logic_vector(9 downto 0);
-        DELTA : out std_logic_vector(2 downto 0)
+        DELTA_X : out std_logic_vector(2 downto 0)
     );
 end LUT_TABLE;
 
@@ -88,5 +88,5 @@ begin
           val_sin_90 when ANGLE = "1011010" else
           Y2_no_edge;
           
-    DELTA <= ANGLE(2 downto 0);
+    DELTA_X <= ANGLE(2 downto 0);
 end RTL;
