@@ -9,7 +9,7 @@ entity FIRST_STAGE is
     );
 end FIRST_STAGE;
 
-architecture RTL of FIRST_STAGE is
+architecture STRUCTURAL of FIRST_STAGE is
     component ANGLE_ADAPTER
         port(
             ANGLE    : in  std_logic_vector(9 downto 0);
@@ -39,4 +39,4 @@ begin
             RESULT   => ANGLE_ADAPTED,
             SIGN     => SIGN_CALCULATED
         );
-end RTL;
+end STRUCTURAL;
