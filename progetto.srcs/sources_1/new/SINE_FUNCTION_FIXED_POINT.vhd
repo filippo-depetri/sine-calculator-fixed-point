@@ -32,7 +32,7 @@ architecture STRUCTURAL of SINE_FUNCTION_FIXED_POINT is
 
     component FIRST_STAGE
         PORT(
-            ANGLE               : in std_logic_vector(9 downto 0);
+            ANGLE               : in std_logic_vector(8 downto 0);
             ANGLE_ADAPTED       : out std_logic_vector(6 downto 0);
             SIGN_CALCULATED     : out std_logic
         );
@@ -53,8 +53,7 @@ architecture STRUCTURAL of SINE_FUNCTION_FIXED_POINT is
         );
     end component THIRD_STAGE;
 
-    signal ANGLE_sign_to_adjust     : std_logic_vector(8 downto 0);
-    signal ANGLE_sign               : std_logic_vector(9 downto 0);
+    signal ANGLE_sign               : std_logic_vector(8 downto 0);
     signal ANGLE_ADAPTED_sign       : std_logic_vector(6 downto 0);
     signal ANGLE_ADAPTED_sign_reg   : std_logic_vector(6 downto 0);
     signal SINE_sign                : std_logic_vector(9 downto 0);
@@ -71,9 +70,8 @@ begin
             CLK => CLK,
             RST => RST,
             D   => ANGLE,
-            Q   => ANGLE_sign_to_adjust
+            Q   => ANGLE_sign
         );
-    ANGLE_sign <= '0' & ANGLE_sign_to_adjust;
     FIRST_STAGE_inst: FIRST_STAGE
         PORT MAP(
             ANGLE               => ANGLE_sign,
