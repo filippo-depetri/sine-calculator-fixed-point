@@ -14,7 +14,7 @@ entity ADDER_SUBTRACTOR_N is
     );
 end ADDER_SUBTRACTOR_N;
 
-architecture RTL of ADDER_SUBTRACTOR_N is
+architecture STRUCTURAL of ADDER_SUBTRACTOR_N is
     component RCA_N
      generic(
           N : integer
@@ -41,4 +41,4 @@ begin
             S       => Z,
             COUT    => COUT
         );
-end RTL;
+end STRUCTURAL;

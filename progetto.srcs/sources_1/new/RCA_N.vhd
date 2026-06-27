@@ -14,7 +14,7 @@ entity RCA_N is
     );
 end RCA_N;
 
-architecture RTL of RCA_N is
+architecture STRUCTURAL of RCA_N is
    component FA
     port(
         X    : in  std_logic;
@@ -38,4 +38,4 @@ begin
 		end generate;
 	C(0) <= CIN;
 	COUT <= C(N);
-end RTL;
+end STRUCTURAL;
