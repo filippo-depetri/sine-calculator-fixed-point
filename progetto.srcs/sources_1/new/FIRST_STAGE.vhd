@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity FIRST_STAGE is
     Port (
-        ANGLE : in std_logic_vector(8 downto 0);
+        ANGLE : in std_logic_vector(9 downto 0);
         ANGLE_ADAPTED : out std_logic_vector(6 downto 0);
         SIGN_CALCULATED : out std_logic
     );
@@ -25,19 +25,17 @@ architecture STRUCTURAL of FIRST_STAGE is
         );
     end component ANGLE_COMPARATOR;
 
-    signal ANGLE_EXTENDED : std_logic_vector(9 downto 0);
     signal quadrant : std_logic_vector(1 downto 0);
 begin
-    angle_extended <= '0' & ANGLE;
     ANGLE_COMPARATOR_inst : ANGLE_COMPARATOR
         port map(
-            ANGLE  => ANGLE_EXTENDED,
+            ANGLE  => ANGLE,
             RESULT => quadrant
         );
 
     ANGLE_ADAPTER_inst : ANGLE_ADAPTER
         port map(
-            ANGLE    => ANGLE_EXTENDED,
+            ANGLE    => ANGLE,
             QUADRANT => quadrant,
             RESULT   => ANGLE_ADAPTED,
             SIGN     => SIGN_CALCULATED
