@@ -8,13 +8,13 @@ architecture BEH of TB_FIRST_STAGE is
 
     component FIRST_STAGE
         port(
-            ANGLE           : in  std_logic_vector(9 downto 0);
+            ANGLE           : in  std_logic_vector(8 downto 0);
             ANGLE_ADAPTED   : out std_logic_vector(6 downto 0);
             SIGN_CALCULATED : out std_logic
         );
     end component FIRST_STAGE;
 
-    signal ANGLE           : std_logic_vector(9 downto 0);
+    signal ANGLE           : std_logic_vector(8 downto 0);
     signal ANGLE_ADAPTED   : std_logic_vector(6 downto 0);
     signal SIGN_CALCULATED : std_logic;
 
@@ -30,31 +30,31 @@ begin
 
         wait for 10 ns;
 
-        ANGLE <= "0000000000"; -- 0
+        ANGLE <= "000000000"; -- 0
         wait for 10 ns; 
         
-        ANGLE <= "0000101101"; -- 45
+        ANGLE <= "000101101"; -- 45
         wait for 10 ns; 
         
-        ANGLE <= "0001011010"; -- 90
+        ANGLE <= "001011010"; -- 90
         wait for 10 ns; 
         
-        ANGLE <= "0010000111"; -- 135
+        ANGLE <= "010000111"; -- 135
         wait for 10 ns; 
         
-        ANGLE <= "0010110100"; -- 180
+        ANGLE <= "010110100"; -- 180
         wait for 10 ns; 
         
-        ANGLE <= "0011100001"; -- 225
+        ANGLE <= "011100001"; -- 225
         wait for 10 ns; 
         
-        ANGLE <= "0100001110"; -- 270
+        ANGLE <= "100001110"; -- 270
         wait for 10 ns; 
         
-        ANGLE <= "0100111011"; -- 315
+        ANGLE <= "100111011"; -- 315
         wait for 10 ns; 
         
-        ANGLE <= "0101100111"; -- 359
+        ANGLE <= "101100111"; -- 359
         wait for 10 ns;
 
         wait; 

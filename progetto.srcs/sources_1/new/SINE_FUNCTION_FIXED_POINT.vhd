@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity SINE_FUNCTION_FIXED_POINT is
     PORT(
-        ANGLE   : in std_logic_vector(9 downto 0);
+        ANGLE   : in std_logic_vector(8 downto 0);
         SINE    : out std_logic_vector(9 downto 0);
         CLK     : in std_logic;
         RST     : in std_logic
@@ -32,7 +32,7 @@ architecture STRUCTURAL of SINE_FUNCTION_FIXED_POINT is
 
     component FIRST_STAGE
         PORT(
-            ANGLE               : in std_logic_vector(9 downto 0);
+            ANGLE               : in std_logic_vector(8 downto 0);
             ANGLE_ADAPTED       : out std_logic_vector(6 downto 0);
             SIGN_CALCULATED     : out std_logic
         );
@@ -53,7 +53,7 @@ architecture STRUCTURAL of SINE_FUNCTION_FIXED_POINT is
         );
     end component THIRD_STAGE;
 
-    signal ANGLE_sign               : std_logic_vector(9 downto 0);
+    signal ANGLE_sign               : std_logic_vector(8 downto 0);
     signal ANGLE_ADAPTED_sign       : std_logic_vector(6 downto 0);
     signal ANGLE_ADAPTED_sign_reg   : std_logic_vector(6 downto 0);
     signal SINE_sign                : std_logic_vector(9 downto 0);
@@ -65,7 +65,7 @@ architecture STRUCTURAL of SINE_FUNCTION_FIXED_POINT is
 
 begin
     REG_PP_ENTRY: REG_PP_N_BIT
-        GENERIC MAP(N => 10)
+        GENERIC MAP(N => 9)
         PORT MAP(
             CLK => CLK,
             RST => RST,
